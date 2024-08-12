@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import numpy as np
 
 # Load the pre-trained pipeline
 pipe = pickle.load(open('pipe.pkl', 'rb'))
@@ -119,6 +120,9 @@ def main():
             'Alopecia': [alopecia],
             'Obesity': [obesity]
         })
+
+        # Convert all columns to the appropriate type to avoid issues
+        input_data = input_data.apply(pd.to_numeric, errors='coerce').fillna(0)
 
         try:
             # Make prediction using the pre-trained pipeline

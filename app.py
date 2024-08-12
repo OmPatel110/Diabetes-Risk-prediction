@@ -120,16 +120,19 @@ def main():
             'Obesity': [obesity]
         })
 
-        # Make prediction using the pre-trained pipeline
-        prediction = pipe.predict(input_data)[0]
+        try:
+            # Make prediction using the pre-trained pipeline
+            prediction = pipe.predict(input_data)[0]
 
-       # Display the prediction result
-        if prediction == 1:
-            st.title('Prediction: High Risk of Diabetes')
-            st.success("You are at high risk of diabetes. Please consult a healthcare provider for further assessment.")
-        else:
-            st.title('Prediction: Low Risk of Diabetes')
-            st.success("You are at low risk of diabetes. Maintain a healthy lifestyle and regular check-ups.")
+            # Display the prediction result
+            if prediction == 1:
+                st.title('Prediction: High Risk of Diabetes')
+                st.success("You are at high risk of diabetes. Please consult a healthcare provider for further assessment.")
+            else:
+                st.title('Prediction: Low Risk of Diabetes')
+                st.success("You are at low risk of diabetes. Maintain a healthy lifestyle and regular check-ups.")
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
 
 if __name__ == "__main__":
     main()

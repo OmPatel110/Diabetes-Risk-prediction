@@ -5,7 +5,7 @@ import numpy as np
 import joblib
 
 # Load the pre-trained pipeline
-pipe = pickle.load(open('pipe.pkl', 'rb'))
+# pipe = pickle.load(open('pipe.pkl', 'rb'))
 # Load the pre-trained pipeline using joblib
 pipeline_rf = joblib.load('pipeline_rf.joblib')
 

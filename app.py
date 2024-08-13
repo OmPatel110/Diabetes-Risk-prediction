@@ -121,6 +121,11 @@ def main():
             'Obesity': [obesity]
         })
 
+        if input_data.isnull().values.any():
+            st.error("Input contains missing values. Please fill all the fields.")
+            return
+
+
         try:
             # Make prediction using the pre-trained pipeline
             prediction = pipe.predict(input_data)[0]

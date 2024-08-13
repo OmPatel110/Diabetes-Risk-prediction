@@ -1,10 +1,13 @@
 import streamlit as st
-import pickle
+# import pickle
 import pandas as pd
 import numpy as np
+import joblib
 
 # Load the pre-trained pipeline
 pipe = pickle.load(open('pipe.pkl', 'rb'))
+# Load the pre-trained pipeline using joblib
+pipeline_rf = joblib.load('pipeline_rf.joblib')
 
 def main():
     # Custom CSS for styling the title
@@ -128,7 +131,7 @@ def main():
 
         try:
             # Make prediction using the pre-trained pipeline
-            prediction = pipe.predict(input_data)[0]
+            prediction = pipeline_rf.predict(input_data)[0]
 
             # Display the prediction result
             if prediction == 1:

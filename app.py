@@ -7,7 +7,7 @@ import joblib
 # Load the pre-trained pipeline
 # pipe = pickle.load(open('pipe.pkl', 'rb'))
 # Load the pre-trained pipeline using joblib
-pipeline_rf = joblib.load('pipeline_rf.joblib')
+pipeline_rf = joblib.load('model_pipeline.joblib')
 
 def main():
     # Custom CSS for styling the title

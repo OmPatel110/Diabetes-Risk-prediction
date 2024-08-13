@@ -120,46 +120,25 @@ def main():
         #     'Alopecia': [alopecia],
         #     'Obesity': [obesity]
         # })
-        test_data = pd.DataFrame({
-        'Age': [25],
-        'Gender': [1],  # Male
-        'Polyuria': [0],  # No
-        'Polydipsia': [0],  # No
-        'sudden weight loss': [0],  # No
-        'weakness': [0],  # No
-        'Polyphagia': [0],  # No
-        'Genital thrush': [0],  # No
-        'visual blurring': [0],  # No
-        'Itching': [0],  # No
-        'Irritability': [0],  # No
-        'delayed healing': [0],  # No
-        'partial paresis': [0],  # No
-        'muscle stiffness': [0],  # No
-        'Alopecia': [0],  # No
-        'Obesity': [0]  # No
-    })
 
-    st.write("Test Data for Prediction:")
-    st.write(test_data)
+         # Prepare input data as a NumPy array
+        input_data = np.array([[age, gender, polyuria, polydipsia, sudden_weight_loss, weakness, polyphagia,
+                                genital_thrush, visual_blurring, itching, irritability, delayed_healing, partial_paresis,
+                                muscle_stiffness, alopecia, obesity]])
+        
+        try:
+            # Make prediction using the pre-trained pipeline
+            prediction = pipe.predict(input_data)[0]
 
-    prediction = pipe.predict(test_data)[0]
-    st.write(f"Test Prediction: {prediction}")
-
-
-        # try:
-        #     # Make prediction using the pre-trained pipeline
-        #     prediction = pipe.predict(input_data)[0]
-
-        #     # Display the prediction result
-        #     if prediction == 1:
-        #         st.title('Prediction: High Risk of Diabetes')
-        #         st.success("You are at high risk of diabetes. Please consult a healthcare provider for further assessment.")
-        #     else:
-        #         st.title('Prediction: Low Risk of Diabetes')
-        #         st.success("You are at low risk of diabetes. Maintain a healthy lifestyle and regular check-ups.")
-        # except Exception as e:
-        #     st.error(f"An error occurred: {e}")
-
+            # Display the prediction result
+            if prediction == 1:
+                st.title('Prediction: High Risk of Diabetes')
+                st.success("You are at high risk of diabetes. Please consult a healthcare provider for further assessment.")
+            else:
+                st.title('Prediction: Low Risk of Diabetes')
+                st.success("You are at low risk of diabetes. Maintain a healthy lifestyle and regular check-ups.")
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
 
 
 if __name__ == "__main__":

@@ -102,38 +102,65 @@ def main():
         obesity = 1 if obesity == 'Yes' else 0
 
         # Prepare input data as a DataFrame
-        input_data = pd.DataFrame({
-            'Age': [age],
-            'Gender': [gender],
-            'Polyuria': [polyuria],
-            'Polydipsia': [polydipsia],
-            'sudden weight loss': [sudden_weight_loss],
-            'weakness': [weakness],
-            'Polyphagia': [polyphagia],
-            'Genital thrush': [genital_thrush],
-            'visual blurring': [visual_blurring],
-            'Itching': [itching],
-            'Irritability': [irritability],
-            'delayed healing': [delayed_healing],
-            'partial paresis': [partial_paresis],
-            'muscle stiffness': [muscle_stiffness],
-            'Alopecia': [alopecia],
-            'Obesity': [obesity]
-        })
+        # input_data = pd.DataFrame({
+        #     'Age': [age],
+        #     'Gender': [gender],
+        #     'Polyuria': [polyuria],
+        #     'Polydipsia': [polydipsia],
+        #     'sudden weight loss': [sudden_weight_loss],
+        #     'weakness': [weakness],
+        #     'Polyphagia': [polyphagia],
+        #     'Genital thrush': [genital_thrush],
+        #     'visual blurring': [visual_blurring],
+        #     'Itching': [itching],
+        #     'Irritability': [irritability],
+        #     'delayed healing': [delayed_healing],
+        #     'partial paresis': [partial_paresis],
+        #     'muscle stiffness': [muscle_stiffness],
+        #     'Alopecia': [alopecia],
+        #     'Obesity': [obesity]
+        # })
+        test_data = pd.DataFrame({
+        'Age': [25],
+        'Gender': [1],  # Male
+        'Polyuria': [0],  # No
+        'Polydipsia': [0],  # No
+        'sudden weight loss': [0],  # No
+        'weakness': [0],  # No
+        'Polyphagia': [0],  # No
+        'Genital thrush': [0],  # No
+        'visual blurring': [0],  # No
+        'Itching': [0],  # No
+        'Irritability': [0],  # No
+        'delayed healing': [0],  # No
+        'partial paresis': [0],  # No
+        'muscle stiffness': [0],  # No
+        'Alopecia': [0],  # No
+        'Obesity': [0]  # No
+    })
 
-        try:
-            # Make prediction using the pre-trained pipeline
-            prediction = pipe.predict(input_data)[0]
+    st.write("Test Data for Prediction:")
+    st.write(test_data)
 
-            # Display the prediction result
-            if prediction == 1:
-                st.title('Prediction: High Risk of Diabetes')
-                st.success("You are at high risk of diabetes. Please consult a healthcare provider for further assessment.")
-            else:
-                st.title('Prediction: Low Risk of Diabetes')
-                st.success("You are at low risk of diabetes. Maintain a healthy lifestyle and regular check-ups.")
-        except Exception as e:
-            st.error(f"An error occurred: {e}")
+    prediction = pipe.predict(test_data)[0]
+    st.write(f"Test Prediction: {prediction}")
+
+
+        # try:
+        #     # Make prediction using the pre-trained pipeline
+        #     prediction = pipe.predict(input_data)[0]
+
+        #     # Display the prediction result
+        #     if prediction == 1:
+        #         st.title('Prediction: High Risk of Diabetes')
+        #         st.success("You are at high risk of diabetes. Please consult a healthcare provider for further assessment.")
+        #     else:
+        #         st.title('Prediction: Low Risk of Diabetes')
+        #         st.success("You are at low risk of diabetes. Maintain a healthy lifestyle and regular check-ups.")
+        # except Exception as e:
+        #     st.error(f"An error occurred: {e}")
+
+
 
 if __name__ == "__main__":
     main()

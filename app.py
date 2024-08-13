@@ -102,30 +102,25 @@ def main():
         obesity = 1 if obesity == 'Yes' else 0
 
         # Prepare input data as a DataFrame
-        # input_data = pd.DataFrame({
-        #     'Age': [age],
-        #     'Gender': [gender],
-        #     'Polyuria': [polyuria],
-        #     'Polydipsia': [polydipsia],
-        #     'sudden weight loss': [sudden_weight_loss],
-        #     'weakness': [weakness],
-        #     'Polyphagia': [polyphagia],
-        #     'Genital thrush': [genital_thrush],
-        #     'visual blurring': [visual_blurring],
-        #     'Itching': [itching],
-        #     'Irritability': [irritability],
-        #     'delayed healing': [delayed_healing],
-        #     'partial paresis': [partial_paresis],
-        #     'muscle stiffness': [muscle_stiffness],
-        #     'Alopecia': [alopecia],
-        #     'Obesity': [obesity]
-        # })
+        input_data = pd.DataFrame({
+            'Age': [age],
+            'Gender': [gender],
+            'Polyuria': [polyuria],
+            'Polydipsia': [polydipsia],
+            'sudden weight loss': [sudden_weight_loss],
+            'weakness': [weakness],
+            'Polyphagia': [polyphagia],
+            'Genital thrush': [genital_thrush],
+            'visual blurring': [visual_blurring],
+            'Itching': [itching],
+            'Irritability': [irritability],
+            'delayed healing': [delayed_healing],
+            'partial paresis': [partial_paresis],
+            'muscle stiffness': [muscle_stiffness],
+            'Alopecia': [alopecia],
+            'Obesity': [obesity]
+        })
 
-         # Prepare input data as a NumPy array
-        input_data = np.array([[age, gender, polyuria, polydipsia, sudden_weight_loss, weakness, polyphagia,
-                                genital_thrush, visual_blurring, itching, irritability, delayed_healing, partial_paresis,
-                                muscle_stiffness, alopecia, obesity]])
-        
         try:
             # Make prediction using the pre-trained pipeline
             prediction = pipe.predict(input_data)[0]

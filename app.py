@@ -121,9 +121,6 @@ def main():
             'Obesity': [obesity]
         })
 
-        # Convert all columns to the appropriate type to avoid issues
-        input_data = input_data.apply(pd.to_numeric, errors='coerce').fillna(0)
-
         try:
             # Make prediction using the pre-trained pipeline
             prediction = pipe.predict(input_data)[0]
